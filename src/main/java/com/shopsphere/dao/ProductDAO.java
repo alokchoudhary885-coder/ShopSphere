@@ -471,6 +471,32 @@ public class ProductDAO {
     }
 
     /**
+     * Updates the available stock quantity for a product using an externally managed {@link Connection}.
+     * Crucial for executing within atomic checkout transactions.
+     * <p>
+     * <b>Note:</b> Does NOT close the provided connection.
+     * </p>
+     *
+     * @param productId the product ID
+     * @param quantity  new stock quantity (must be >= 0)
+     * @param conn      the active transaction connection
+     * @return {@code true} if updated successfully, {@code false} otherwise
+     * @throws SQLException if a database error occurs
+     */
+    public boolean updateStock(int productId, int quantity, Connection conn) throws SQLException {
+        if (productId <= 0 || conn == null) {
+            return false;
+        }
+
+        try (PreparedStatement ps = conn.prepareStatement(SQL_UPDATE_STOCK)) {
+            ps.setInt(1, Math.max(quantity, 0));
+            ps.setInt(2, productId);
+
+            return ps.executeUpdate() > 0;
+        }
+    }
+
+    /**
      * Updates the available stock quantity for a product.
      *
      * @param productId the product ID
@@ -482,13 +508,8 @@ public class ProductDAO {
             return false;
         }
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SQL_UPDATE_STOCK)) {
-
-            ps.setInt(1, Math.max(quantity, 0));
-            ps.setInt(2, productId);
-
-            return ps.executeUpdate() > 0;
+        try (Connection conn = DBConnection.getConnection()) {
+            return updateStock(productId, quantity, conn);
         } catch (SQLException e) {
             System.err.println("[ProductDAO] Error in updateStock(ID: " + productId + ", qty: " + quantity + "): " + e.getMessage());
             e.printStackTrace(System.err);
