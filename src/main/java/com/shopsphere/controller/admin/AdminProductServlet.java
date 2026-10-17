@@ -149,10 +149,10 @@ public class AdminProductServlet extends HttpServlet {
 
     private Product extractProductFromRequest(HttpServletRequest request) {
         Product p = new Product();
-        p.setName(request.getParameter("name"));
-        p.setBrand(request.getParameter("brand"));
-        p.setDescription(request.getParameter("description"));
-        p.setImageUrl(request.getParameter("imageUrl"));
+        p.setName(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("name")));
+        p.setBrand(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("brand")));
+        p.setDescription(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("description")));
+        p.setImageUrl(request.getParameter("imageUrl") != null ? request.getParameter("imageUrl").trim() : "");
 
         try {
             p.setCategoryId(Integer.parseInt(request.getParameter("categoryId")));

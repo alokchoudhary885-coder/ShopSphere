@@ -89,9 +89,8 @@ public class LoginServlet extends HttpServlet {
         newSession.setAttribute("userRole", user.getRole());
         newSession.setAttribute("userName", user.getFullName());
 
-        // Generate CSRF token for state-changing forms
-        String csrfToken = java.util.UUID.randomUUID().toString();
-        newSession.setAttribute("csrfToken", csrfToken);
+        // Generate cryptographically secure CSRF token for state-changing forms
+        com.shopsphere.util.CSRFTokenUtil.rotateToken(newSession);
 
         // ServletContext demonstration: access application-wide parameters
         String appName = getServletContext().getInitParameter("appName");

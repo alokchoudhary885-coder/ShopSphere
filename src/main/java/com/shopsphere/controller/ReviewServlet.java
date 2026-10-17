@@ -69,7 +69,7 @@ public class ReviewServlet extends HttpServlet {
         review.setUserId(user.getId());
         review.setProductId(productId);
         review.setRating(rating);
-        review.setComment(comment != null ? comment.trim() : "");
+        review.setComment(com.shopsphere.util.InputSanitizer.escapeHtml(comment));
 
         boolean success = productService.addReview(review);
         if (success) {

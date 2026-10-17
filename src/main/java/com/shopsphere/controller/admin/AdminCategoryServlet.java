@@ -69,10 +69,10 @@ public class AdminCategoryServlet extends HttpServlet {
             switch (action) {
                 case "add" -> {
                     Category cat = new Category();
-                    cat.setName(request.getParameter("name"));
-                    cat.setDescription(request.getParameter("description"));
-                    cat.setIcon(request.getParameter("icon"));
-                    cat.setImageUrl(request.getParameter("imageUrl"));
+                    cat.setName(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("name")));
+                    cat.setDescription(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("description")));
+                    cat.setIcon(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("icon")));
+                    cat.setImageUrl(request.getParameter("imageUrl") != null ? request.getParameter("imageUrl").trim() : "");
                     cat.setStatus(Boolean.parseBoolean(request.getParameter("status")));
 
                     boolean added = productService.addCategory(cat);
@@ -88,10 +88,10 @@ public class AdminCategoryServlet extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("id"));
                     Category cat = new Category();
                     cat.setId(id);
-                    cat.setName(request.getParameter("name"));
-                    cat.setDescription(request.getParameter("description"));
-                    cat.setIcon(request.getParameter("icon"));
-                    cat.setImageUrl(request.getParameter("imageUrl"));
+                    cat.setName(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("name")));
+                    cat.setDescription(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("description")));
+                    cat.setIcon(com.shopsphere.util.InputSanitizer.escapeHtml(request.getParameter("icon")));
+                    cat.setImageUrl(request.getParameter("imageUrl") != null ? request.getParameter("imageUrl").trim() : "");
                     cat.setStatus(Boolean.parseBoolean(request.getParameter("status")));
 
                     boolean updated = productService.updateCategory(cat);

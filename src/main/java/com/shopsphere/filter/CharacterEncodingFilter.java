@@ -35,6 +35,16 @@ public class CharacterEncodingFilter implements Filter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setHeader("X-Content-Type-Options", "nosniff");
             httpResponse.setHeader("X-Frame-Options", "SAMEORIGIN");
+            httpResponse.setHeader("X-XSS-Protection", "1; mode=block");
+            httpResponse.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+        }
+
+        // Initialize session CSRF token if session exists
+        if (request instanceof jakarta.servlet.http.HttpServletRequest httpRequest) {
+            jakarta.servlet.http.HttpSession session = httpRequest.getSession(false);
+            if (session != null) {
+                com.shopsphere.util.CSRFTokenUtil.getToken(session);
+            }
         }
 
         chain.doFilter(request, response);
