@@ -86,6 +86,10 @@ public class AppletLifecycleSimulator {
         log("5. destroy() invoked: Releasing all resources and sockets. Garbage collection ready.");
     }
 
+    public AppletState getCurrentState() {
+        return currentState;
+    }
+
     private void log(String message) {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
         System.out.println("[" + timestamp + "] [" + appletName + "] [" + currentState + "] -> " + message);
