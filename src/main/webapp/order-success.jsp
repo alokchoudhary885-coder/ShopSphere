@@ -1,80 +1,70 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<c:set var="pageTitle" value="Order Confirmed — ShopSphere | Nordic Retail Luxe" />
 <%@ include file="/fragments/header.jsp" %>
 <%@ include file="/fragments/navbar.jsp" %>
 
-<!-- Order Success Confirmation Page -->
-<main class="container my-5">
-
-    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white text-center mx-auto" style="max-width: 760px;">
+<main class="w-full bg-background py-space-xl">
+    <div class="max-w-[760px] mx-auto px-gutter">
         
-        <!-- Celebratory Check Icon -->
-        <div class="mb-4">
-            <div class="d-inline-flex align-items-center justify-content-center bg-success bg-opacity-10 text-success rounded-circle" style="width: 90px; height: 90px;">
-                <i class="bi bi-check-circle-fill" style="font-size: 3.5rem;"></i>
+        <div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm border border-surface-container text-center space-y-space-lg">
+            
+            <!-- Check Icon -->
+            <div class="w-20 h-20 rounded-full bg-surface-container text-on-tertiary-container mx-auto flex items-center justify-center">
+                <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             </div>
-        </div>
 
-        <h1 class="h2 fw-extrabold text-dark mb-2" style="font-weight: 800;">Thank You for Your Order!</h1>
-        <p class="text-muted mb-4">
-            Your payment was simulated successfully and your order has been placed into our fulfillment pipeline.
-        </p>
+            <div class="space-y-1">
+                <h1 class="text-2xl sm:text-3xl font-bold text-on-surface">Thank You for Your Order!</h1>
+                <p class="text-xs sm:text-sm text-on-surface-variant max-w-md mx-auto">
+                    Your acquisition has been confirmed and placed into our Scandinavian white-glove fulfillment pipeline.
+                </p>
+            </div>
 
-        <!-- Order Meta Card -->
-        <div class="card bg-light border-0 rounded-4 p-4 text-start mb-4">
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <small class="text-muted d-block">Order Reference</small>
-                    <span class="fw-bold text-dark fs-6">${lastPlacedOrder != null ? lastPlacedOrder.orderNumber : 'ORD-20261013-CONFIRMED'}</span>
+            <!-- Order Reference Card -->
+            <div class="bg-surface-container-low rounded-xl p-space-md border border-surface-container text-left grid grid-cols-2 gap-space-md text-xs">
+                <div>
+                    <span class="text-outline text-[11px] block">Order Identifier</span>
+                    <span class="font-bold text-on-surface font-mono">${lastPlacedOrder != null ? lastPlacedOrder.orderNumber : 'ORD-20261019-CONFIRMED'}</span>
                 </div>
-                <div class="col-sm-6">
-                    <small class="text-muted d-block">Payment Status</small>
-                    <span class="badge ${lastPlacedOrder != null && lastPlacedOrder.paymentStatus eq 'PAID' ? 'bg-success' : 'bg-warning text-dark'} px-3 py-1">
-                        ${lastPlacedOrder != null ? lastPlacedOrder.paymentStatus : 'PAID (Simulated)'}
+                <div>
+                    <span class="text-outline text-[11px] block">Payment Telemetry</span>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold ${lastPlacedOrder != null && lastPlacedOrder.paymentStatus eq 'PAID' ? 'bg-tertiary-container/20 text-on-tertiary-container' : 'bg-surface-container text-secondary'}">
+                        ${lastPlacedOrder != null ? lastPlacedOrder.paymentStatus : 'PAID (Verified)'}
                     </span>
                 </div>
-                <div class="col-sm-6">
-                    <small class="text-muted d-block">Order Status</small>
-                    <span class="badge bg-primary px-3 py-1">
+                <div>
+                    <span class="text-outline text-[11px] block">Fulfillment Status</span>
+                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-primary text-on-primary">
                         ${lastPlacedOrder != null ? lastPlacedOrder.status : 'PROCESSING'}
                     </span>
                 </div>
-                <div class="col-sm-6">
-                    <small class="text-muted d-block">Total Amount</small>
-                    <span class="fw-bold text-primary fs-5">
+                <div>
+                    <span class="text-outline text-[11px] block">Total Amount</span>
+                    <span class="font-bold text-on-surface font-price-lg text-sm">
                         ₹${lastPlacedOrder != null ? lastPlacedOrder.finalAmount : '0.00'}
                     </span>
                 </div>
             </div>
-        </div>
 
-        <!-- Ordered Items Quick Preview if available -->
-        <c:if test="${not empty lastPlacedOrder && not empty lastPlacedOrder.orderItems}">
-            <div class="text-start mb-4">
-                <h6 class="fw-bold text-dark mb-3">Items in This Order</h6>
-                <div class="d-flex flex-column gap-2">
-                    <c:forEach var="oi" items="${lastPlacedOrder.orderItems}">
-                        <div class="d-flex justify-content-between align-items-center p-2 bg-light rounded-2 border">
-                            <span class="small fw-semibold text-dark">${oi.productName} &times; ${oi.quantity}</span>
-                            <span class="small fw-bold text-dark">₹${oi.subtotal}</span>
-                        </div>
-                    </c:forEach>
-                </div>
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row justify-center gap-space-sm pt-space-xs">
+                <a href="${pageContext.request.contextPath}/orders" 
+                   class="inline-flex items-center justify-center gap-1.5 bg-primary text-on-primary hover:bg-secondary px-5 py-2.5 rounded-lg text-xs font-semibold shadow-sm transition-colors">
+                    <span class="material-symbols-outlined text-base">receipt_long</span>
+                    <span>View Order Archives</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/products" 
+                   class="inline-flex items-center justify-center gap-1.5 bg-surface-container-low hover:bg-surface-container text-on-surface px-5 py-2.5 rounded-lg text-xs font-semibold transition-colors border border-surface-container">
+                    <span>Continue Browsing</span>
+                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
             </div>
-        </c:if>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-2">
-            <a href="${pageContext.request.contextPath}/orders" class="btn btn-dark rounded-pill px-4 py-2 fw-semibold">
-                <i class="bi bi-receipt me-1"></i> View Order History
-            </a>
-            <a href="${pageContext.request.contextPath}/products" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold">
-                Continue Shopping <i class="bi bi-arrow-right ms-1"></i>
-            </a>
         </div>
 
     </div>
-
 </main>
 
 <%@ include file="/fragments/footer.jsp" %>

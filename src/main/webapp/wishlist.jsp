@@ -1,102 +1,108 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<c:set var="pageTitle" value="Saved Wishlist — ShopSphere | Nordic Retail Luxe" />
 <%@ include file="/fragments/header.jsp" %>
 <%@ include file="/fragments/navbar.jsp" %>
 
-<!-- Saved Wishlist Page -->
-<main class="container my-4">
-
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb small">
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-muted">Home</a></li>
-            <li class="breadcrumb-item active text-dark" aria-current="page">My Wishlist</li>
-        </ol>
-    </nav>
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1 class="h3 fw-bold text-dark mb-1">My Wishlist</h1>
-            <p class="text-muted small mb-0">Saved products you love across devices</p>
+<main class="w-full bg-background">
+    <div class="max-w-[1440px] w-full mx-auto px-gutter py-space-lg">
+        
+        <!-- Breadcrumb & Header Meta -->
+        <div class="flex items-center gap-space-xs text-xs font-medium text-on-surface-variant mb-space-lg">
+            <a class="hover:text-primary transition-colors flex items-center gap-1" href="${pageContext.request.contextPath}/">
+                <span class="material-symbols-outlined text-sm">storefront</span>
+                <span>Store</span>
+            </a>
+            <span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+            <span class="text-on-surface font-semibold">Saved Curations &amp; Wishlist</span>
         </div>
-        <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-semibold">
-            <i class="bi bi-heart-fill me-1"></i> ${sessionScope.wishlistCount != null ? sessionScope.wishlistCount : '0'} items
-        </span>
-    </div>
 
-    <c:choose>
-        <c:when test="${not empty wishlistItems}">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                <c:forEach var="item" items="${wishlistItems}">
-                    <div class="col">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden position-relative product-card">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-space-sm mb-space-lg">
+            <div>
+                <h1 class="text-2xl font-bold text-on-surface tracking-tight">Saved Wishlist</h1>
+                <p class="text-xs text-on-surface-variant">Your personal curations synchronized across devices.</p>
+            </div>
+            <span class="bg-surface-container-high text-secondary px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">favorite</span>
+                <span>${wishlistItems != null ? wishlistItems.size() : (sessionScope.wishlistCount != null ? sessionScope.wishlistCount : 0)} Curations</span>
+            </span>
+        </div>
+
+        <c:choose>
+            <c:when test="${not empty wishlistItems}">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+                    <c:forEach var="item" items="${wishlistItems}">
+                        <div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 group border border-surface-container relative">
                             
                             <!-- Delete Button -->
-                            <form action="${pageContext.request.contextPath}/wishlist" method="POST" class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
+                            <form action="${pageContext.request.contextPath}/wishlist" method="POST" class="absolute top-2.5 right-2.5 z-10">
                                 <input type="hidden" name="action" value="remove">
                                 <input type="hidden" name="wishlistId" value="${item.id}">
-                                <button type="submit" class="btn btn-sm btn-light rounded-circle shadow-sm text-danger" title="Remove from wishlist">
-                                    <i class="bi bi-x-lg"></i>
+                                <button type="submit" class="w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-outline hover:text-error flex items-center justify-center shadow-sm transition-transform active:scale-90 cursor-pointer" title="Remove from wishlist">
+                                    <span class="material-symbols-outlined text-base">close</span>
                                 </button>
                             </form>
 
-                            <!-- Product Thumbnail -->
-                            <div class="product-img-wrap">
-                                <a href="${pageContext.request.contextPath}/product-details?id=${item.productId}">
-                                    <img src="${pageContext.request.contextPath}/${item.productImageUrl}" 
-                                         alt="${item.productName}" 
-                                         class="product-thumb"
-                                         onerror="this.onerror=null; this.src='https://placehold.co/300x300/f1f5f9/0f172a?text=Saved+Item';">
-                                </a>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="product-body">
-                                <h3 class="product-title">
+                            <div>
+                                <!-- Product Media -->
+                                <div class="relative w-full aspect-square rounded-lg overflow-hidden bg-surface-container-low mb-space-sm">
                                     <a href="${pageContext.request.contextPath}/product-details?id=${item.productId}">
+                                        <c:set var="wImg" value="${item.productImageUrl}" />
+                                        <c:if test="${not wImg.startsWith('http')}">
+                                            <c:set var="wImg" value="${pageContext.request.contextPath}/${item.productImageUrl}" />
+                                        </c:if>
+                                        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                             src="${wImg}" 
+                                             alt="${item.productName}" 
+                                             onerror="this.onerror=null; this.src='https://placehold.co/400x400/f8f9ff/0b1c30?text=Curated+Item';"/>
+                                    </a>
+                                </div>
+
+                                <h3 class="font-headline-sm text-sm font-bold text-on-surface line-clamp-1 mb-1">
+                                    <a href="${pageContext.request.contextPath}/product-details?id=${item.productId}" class="hover:text-secondary transition-colors">
                                         ${item.productName}
                                     </a>
                                 </h3>
 
-                                <div class="product-price-row mb-3">
-                                    <span class="price-current">₹${item.productPrice}</span>
+                                <div class="flex items-baseline gap-2 mb-space-md">
+                                    <span class="font-price-lg text-base font-bold text-on-surface">₹${item.productPrice}</span>
                                 </div>
-
-                                <!-- Move to Cart Button -->
-                                <form action="${pageContext.request.contextPath}/wishlist" method="POST" class="mt-auto">
-                                    <input type="hidden" name="action" value="moveToCart">
-                                    <input type="hidden" name="wishlistId" value="${item.id}">
-                                    <input type="hidden" name="productId" value="${item.productId}">
-                                    <button type="submit" class="btn btn-dark btn-sm w-100 rounded-pill fw-semibold py-2">
-                                        <i class="bi bi-cart-plus me-1"></i> Move to Cart
-                                    </button>
-                                </form>
                             </div>
 
+                            <!-- Move to Cart Form -->
+                            <form action="${pageContext.request.contextPath}/wishlist" method="POST" class="mt-auto">
+                                <input type="hidden" name="action" value="moveToCart">
+                                <input type="hidden" name="wishlistId" value="${item.id}">
+                                <input type="hidden" name="productId" value="${item.productId}">
+                                <button type="submit" class="w-full inline-flex items-center justify-center gap-1.5 bg-primary text-on-primary hover:bg-secondary py-2.5 rounded-lg text-xs font-semibold transition-colors duration-200 cursor-pointer">
+                                    <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                    <span>Move to Bag</span>
+                                </button>
+                            </form>
                         </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </c:when>
-
-        <c:otherwise>
-            <!-- Empty Wishlist State -->
-            <div class="card border-0 shadow-sm rounded-4 p-5 text-center my-4 bg-white">
-                <div class="text-muted mb-3">
-                    <i class="bi bi-heart" style="font-size: 4rem;"></i>
+                    </c:forEach>
                 </div>
-                <h3 class="fw-bold text-dark mb-2">Your Wishlist is Empty</h3>
-                <p class="text-muted small mb-4">Explore our catalog and click the heart icon on any product to save it for later.</p>
-                <div>
-                    <a href="${pageContext.request.contextPath}/products" class="btn btn-dark rounded-pill px-4 py-2 fw-semibold">
-                        Explore Products
+            </c:when>
+
+            <c:otherwise>
+                <div class="bg-surface-container-lowest rounded-2xl p-space-xl text-center border border-surface-container shadow-sm my-space-lg">
+                    <div class="w-16 h-16 rounded-full bg-surface-container mx-auto flex items-center justify-center text-outline mb-space-md">
+                        <span class="material-symbols-outlined text-3xl">bookmark_border</span>
+                    </div>
+                    <h3 class="text-base font-bold text-on-surface mb-1">Your Wishlist is Empty</h3>
+                    <p class="text-xs text-on-surface-variant max-w-sm mx-auto mb-space-lg">
+                        Browse our bespoke catalog and tap the heart icon on any curation to preserve it here.
+                    </p>
+                    <a href="${pageContext.request.contextPath}/products" class="inline-flex items-center gap-2 bg-primary text-on-primary hover:bg-secondary px-5 py-2.5 rounded-lg text-xs font-semibold shadow-sm transition-colors">
+                        <span>Browse Curations</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
                 </div>
-            </div>
-        </c:otherwise>
-    </c:choose>
+            </c:otherwise>
+        </c:choose>
 
+    </div>
 </main>
 
 <%@ include file="/fragments/footer.jsp" %>

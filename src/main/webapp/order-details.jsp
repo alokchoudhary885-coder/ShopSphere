@@ -1,167 +1,165 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<c:set var="pageTitle" value="Invoice ${order.orderNumber} — ShopSphere | Nordic Retail Luxe" />
 <%@ include file="/fragments/header.jsp" %>
 <%@ include file="/fragments/navbar.jsp" %>
 
-<!-- Order Receipt & Details Page -->
-<main class="container my-4">
-
-    <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="mb-4 d-print-none">
-        <ol class="breadcrumb small">
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-muted">Home</a></li>
-            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/orders" class="text-decoration-none text-muted">My Orders</a></li>
-            <li class="breadcrumb-item active text-dark" aria-current="page">${order.orderNumber}</li>
-        </ol>
-    </nav>
-
-    <!-- Header Actions -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <div class="d-flex align-items-center gap-2 mb-1">
-                <h1 class="h3 fw-bold text-dark mb-0">${order.orderNumber}</h1>
-                <span class="badge ${order.status eq 'DELIVERED' ? 'bg-success' : 'bg-primary'} px-3 py-1">
-                    ${order.status}
-                </span>
-            </div>
-            <p class="text-muted small mb-0">Placed on ${order.createdAt}</p>
-        </div>
-        <div class="d-print-none d-flex gap-2">
-            <button type="button" class="btn btn-outline-dark btn-sm rounded-pill" onclick="window.print()">
-                <i class="bi bi-printer me-1"></i> Print Invoice
-            </button>
-            <a href="${pageContext.request.contextPath}/orders" class="btn btn-light btn-sm rounded-pill border">
-                <i class="bi bi-arrow-left me-1"></i> Back to Orders
-            </a>
-        </div>
-    </div>
-
-    <div class="row g-4">
+<main class="w-full bg-background">
+    <div class="max-w-[1440px] w-full mx-auto px-gutter py-space-lg">
         
-        <!-- Left: Ordered Items List -->
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white mb-4">
-                <div class="card-header bg-white p-3 border-bottom">
-                    <h6 class="fw-bold text-dark mb-0">Ordered Items (${order.orderItems.size()})</h6>
+        <!-- Breadcrumb & Header Meta -->
+        <div class="flex items-center gap-space-xs text-xs font-medium text-on-surface-variant mb-space-lg d-print-none">
+            <a class="hover:text-primary transition-colors flex items-center gap-1" href="${pageContext.request.contextPath}/">
+                <span class="material-symbols-outlined text-sm">storefront</span>
+                <span>Store</span>
+            </a>
+            <span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+            <a class="hover:text-primary transition-colors" href="${pageContext.request.contextPath}/orders">Orders</a>
+            <span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span>
+            <span class="text-on-surface font-semibold font-mono">${order.orderNumber}</span>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-space-sm mb-space-lg">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <h1 class="text-2xl font-bold text-on-surface tracking-tight font-mono">${order.orderNumber}</h1>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider ${order.status eq 'DELIVERED' ? 'bg-tertiary-container/20 text-on-tertiary-container' : 'bg-surface-container text-secondary'}">
+                        ${order.status}
+                    </span>
+                    <span class="px-2 py-0.5 rounded text-xs font-bold font-mono ${order.paymentStatus eq 'PAID' ? 'bg-primary text-on-primary' : 'bg-surface-container-high text-on-surface'}">
+                        ${order.paymentStatus}
+                    </span>
                 </div>
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0">
-                        <thead class="table-light small text-uppercase text-muted">
-                            <tr>
-                                <th>Item</th>
-                                <th class="text-center">Quantity</th>
-                                <th class="text-end">Unit Price</th>
-                                <th class="text-end">Subtotal</th>
+                <p class="text-xs text-on-surface-variant">Archived on ${order.createdAt}</p>
+            </div>
+            
+            <div class="flex items-center gap-2 d-print-none">
+                <button type="button" onclick="window.print()" 
+                        class="inline-flex items-center gap-1.5 bg-surface-container-lowest hover:bg-surface-container-low border border-surface-container text-on-surface px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined text-base">print</span>
+                    <span>Print Invoice</span>
+                </button>
+                <a href="${pageContext.request.contextPath}/orders" 
+                   class="inline-flex items-center gap-1 bg-surface-container-high hover:bg-secondary hover:text-on-secondary px-4 py-2 rounded-lg text-xs font-semibold text-on-surface transition-colors">
+                    <span class="material-symbols-outlined text-base">arrow_back</span>
+                    <span>Back to Orders</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+            
+            <!-- Left 65%: Ordered Items Table -->
+            <div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-surface-container space-y-space-md">
+                <div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+                    <h2 class="text-sm font-bold text-on-surface">Curated Line Items (${order.orderItems.size()})</h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="bg-surface-container-low text-on-surface-variant font-semibold">
+                                <th class="p-2.5 rounded-l">Item Description</th>
+                                <th class="p-2.5 text-center">Quantity</th>
+                                <th class="p-2.5 text-right">Unit Price</th>
+                                <th class="p-2.5 text-right rounded-r">Total</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="divide-y divide-surface-container">
                             <c:forEach var="item" items="${order.orderItems}">
                                 <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <img src="${pageContext.request.contextPath}/${item.productImageUrl}" 
-                                                 alt="${item.productName}" 
-                                                 class="rounded border" 
-                                                 style="width: 50px; height: 50px; object-fit: contain; background: #f8fafc;"
-                                                 onerror="this.onerror=null; this.src='https://placehold.co/80x80/f1f5f9/0f172a?text=Item';">
-                                            <div>
-                                                <a href="${pageContext.request.contextPath}/product-details?id=${item.productId}" class="text-dark fw-bold text-decoration-none small">
-                                                    ${item.productName}
-                                                </a>
+                                    <td class="p-2.5">
+                                        <div class="flex items-center gap-2.5">
+                                            <div class="w-12 h-12 rounded-lg bg-surface-container flex-shrink-0 overflow-hidden border border-surface-container">
+                                                <c:set var="oi" value="${item.productImageUrl}" />
+                                                <c:if test="${not oi.startsWith('http')}">
+                                                    <c:set var="oi" value="${pageContext.request.contextPath}/${item.productImageUrl}" />
+                                                </c:if>
+                                                <img src="${oi}" alt="${item.productName}" class="w-full h-full object-cover" 
+                                                     onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8f9ff/0b1c30?text=Item';"/>
                                             </div>
+                                            <a href="${pageContext.request.contextPath}/product-details?id=${item.productId}" class="font-bold text-on-surface hover:text-secondary transition-colors">
+                                                ${item.productName}
+                                            </a>
                                         </div>
                                     </td>
-                                    <td class="text-center fw-semibold text-secondary">
-                                        ${item.quantity}
-                                    </td>
-                                    <td class="text-end small text-muted">
-                                        ₹${item.unitPrice}
-                                    </td>
-                                    <td class="text-end fw-bold text-dark">
-                                        ₹${item.subtotal}
-                                    </td>
+                                    <td class="p-2.5 text-center font-bold">${item.quantity}</td>
+                                    <td class="p-2.5 text-right font-mono text-outline">₹${item.unitPrice}</td>
+                                    <td class="p-2.5 text-right font-mono font-bold text-on-surface">₹${item.subtotal}</td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
 
-        <!-- Right: Shipping Address, Payment & Financial Summary -->
-        <div class="col-lg-4">
-            
-            <!-- Shipping Address Card -->
-            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
-                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom">
-                    <i class="bi bi-geo-alt me-1 text-primary"></i> Shipping Address
-                </h6>
-                <c:choose>
-                    <c:when test="${not empty order.shippingAddress}">
-                        <div class="small text-secondary">
-                            <div class="fw-bold text-dark mb-1">${sessionScope.user.fullName}</div>
-                            <div>${order.shippingAddress.street}</div>
-                            <div>${order.shippingAddress.city}, ${order.shippingAddress.state} — <strong>${order.shippingAddress.postalCode}</strong></div>
-                            <div>${order.shippingAddress.country}</div>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <span class="text-muted small">Standard registered delivery address.</span>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-
-            <!-- Payment Details Card -->
-            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
-                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom">
-                    <i class="bi bi-credit-card me-1 text-primary"></i> Payment Details
-                </h6>
-                <div class="small text-secondary">
-                    <div class="d-flex justify-content-between mb-1">
-                        <span>Payment Status:</span>
-                        <span class="badge ${order.paymentStatus eq 'PAID' ? 'bg-success' : 'bg-warning text-dark'}">${order.paymentStatus}</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-1">
-                        <span>Gateway:</span>
-                        <span class="text-dark fw-semibold">Mock Payment Gateway</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Invoice Summary Card -->
-            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
-                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom">Payment Summary</h6>
+            <!-- Right 35%: Shipping Address & Financial Calculation -->
+            <div class="lg:col-span-4 flex flex-col gap-space-md">
                 
-                <div class="d-flex justify-content-between mb-2 small text-secondary">
-                    <span>Items Subtotal</span>
-                    <span class="text-dark fw-semibold">₹${order.totalAmount}</span>
-                </div>
-
-                <c:if test="${order.discountAmount > 0}">
-                    <div class="d-flex justify-content-between mb-2 small text-success">
-                        <span>Coupon Discount</span>
-                        <span class="fw-bold">-₹${order.discountAmount}</span>
+                <!-- Destination Address Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-surface-container space-y-space-sm text-xs">
+                    <div class="flex items-center gap-1.5 font-bold text-on-surface pb-space-xs border-b border-surface-container">
+                        <span class="material-symbols-outlined text-secondary text-base">pin_drop</span>
+                        <span>Delivery Address</span>
                     </div>
-                </c:if>
-
-                <div class="d-flex justify-content-between mb-2 small text-secondary">
-                    <span>Delivery Charges</span>
-                    <span class="text-success fw-semibold">FREE</span>
+                    <c:choose>
+                        <c:when test="${not empty order.address}">
+                            <div class="space-y-0.5 text-on-surface-variant">
+                                <div class="font-bold text-on-surface">${sessionScope.user != null ? sessionScope.user.fullName : 'Valued Collector'}</div>
+                                <div>${order.address.street}</div>
+                                <div>${order.address.city}, ${order.address.state} — <strong class="text-on-surface">${order.address.postalCode}</strong></div>
+                                <div>${order.address.country}</div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="text-on-surface-variant">Standard Domestic Verified Delivery</div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
-                <hr>
+                <!-- Financial Calculation -->
+                <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-surface-container space-y-space-md text-xs">
+                    <div class="font-bold text-on-surface pb-space-xs border-b border-surface-container">
+                        Payment &amp; Calculation
+                    </div>
 
-                <div class="d-flex justify-content-between align-items-baseline">
-                    <span class="h6 fw-bold mb-0">Total Paid</span>
-                    <span class="h4 fw-extrabold text-primary mb-0">₹${order.finalAmount}</span>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>Subtotal</span>
+                            <span class="font-bold text-on-surface">₹${order.totalAmount}</span>
+                        </div>
+                        <c:if test="${order.discountAmount > 0}">
+                            <div class="flex justify-between text-on-tertiary-container font-semibold">
+                                <span>Applied Coupon</span>
+                                <span>-₹${order.discountAmount}</span>
+                            </div>
+                        </c:if>
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>Logistics</span>
+                            <span class="text-on-tertiary-container font-bold uppercase">Free</span>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-surface-container"></div>
+
+                    <div class="flex justify-between items-baseline">
+                        <span class="font-bold uppercase tracking-wider text-on-surface">Total Billed</span>
+                        <span class="font-price-lg text-lg font-bold text-on-surface">₹${order.finalAmount}</span>
+                    </div>
+
+                    <div class="bg-surface-container-low rounded-lg p-2.5 text-[11px] text-on-surface-variant flex items-center gap-2 border border-surface-container">
+                        <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                        <span>Verified Transaction by ShopSphere Vault</span>
+                    </div>
                 </div>
+
             </div>
 
         </div>
 
     </div>
-
 </main>
 
 <%@ include file="/fragments/footer.jsp" %>
