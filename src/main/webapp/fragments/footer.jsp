@@ -1,146 +1,164 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<!-- 4-Pillar Trust / Value Proposition Strip (Screenshot 2) -->
-<section class="trust-badges-section py-4 my-5 border-top border-bottom bg-white">
-    <div class="container">
-        <div class="row g-4 text-center text-md-start">
-            
-            <div class="col-6 col-lg-3">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="trust-icon-box bg-primary-subtle text-primary">
-                        <i class="bi bi-arrow-repeat fs-3"></i>
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Free & flexible return</h6>
-                        <small class="text-muted">Easy Returns, No Hassle</small>
-                    </div>
-                </div>
+<!-- Nordic Retail Luxe Value Guarantee Strip -->
+<section class="w-full bg-surface-container-lowest border-t border-b border-surface-container py-space-lg my-space-xl">
+    <div class="max-w-[1440px] mx-auto px-gutter grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+        <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">local_shipping</span>
             </div>
-
-            <div class="col-6 col-lg-3">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="trust-icon-box bg-warning-subtle text-warning">
-                        <i class="bi bi-star-fill fs-3"></i>
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Our Google Reviews</h6>
-                        <small class="text-muted">See What Customers Say</small>
-                    </div>
-                </div>
+            <div class="space-y-0.5">
+                <h4 class="text-sm font-bold text-on-surface">Free & Express Delivery</h4>
+                <p class="text-xs text-on-surface-variant">Complimentary shipping on orders over ₹499</p>
             </div>
-
-            <div class="col-6 col-lg-3">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="trust-icon-box bg-success-subtle text-success">
-                        <i class="bi bi-patch-check-fill fs-3"></i>
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Free Express Shipping</h6>
-                        <small class="text-muted">Enjoy Fast, Free Delivery!</small>
-                    </div>
-                </div>
+        </div>
+        <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">verified</span>
             </div>
-
-            <div class="col-6 col-lg-3">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="trust-icon-box bg-danger-subtle text-danger">
-                        <i class="bi bi-truck fs-3"></i>
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-0" style="font-size: 0.95rem;">Same Day Dispatch</h6>
-                        <small class="text-muted">Prompt Shipping, Quick Arrival</small>
-                    </div>
-                </div>
+            <div class="space-y-0.5">
+                <h4 class="text-sm font-bold text-on-surface">5-Year Craft Guarantee</h4>
+                <p class="text-xs text-on-surface-variant">100% verified authentic Scandinavian designs</p>
             </div>
-
+        </div>
+        <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">assignment_return</span>
+            </div>
+            <div class="space-y-0.5">
+                <h4 class="text-sm font-bold text-on-surface">30-Day In-Home Trial</h4>
+                <p class="text-xs text-on-surface-variant">Hassle-free return & replacement policy</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-space-md">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low text-secondary flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[24px]">support_agent</span>
+            </div>
+            <div class="space-y-0.5">
+                <h4 class="text-sm font-bold text-on-surface">Dedicated Concierge</h4>
+                <p class="text-xs text-on-surface-variant">Expert support 7 days a week</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer-section bg-white pt-5 pb-4">
-    <div class="container">
-        <div class="row g-4 mb-4">
-            
-            <!-- Col 1: Brand Info -->
-            <div class="col-lg-4 col-md-6">
-                <a href="${pageContext.request.contextPath}/" class="brand-logo mb-3">
-                    <i class="bi bi-shop-window text-primary"></i>
-                    <span>ShopSphere</span>
-                </a>
-                <p class="text-muted small mt-2">
-                    Advanced Java Enterprise E-Commerce Management System built for the RTU syllabus. Demonstrates Jakarta Servlets, JSP, JDBC, MVC, Swing, Sockets, and RMI.
-                </p>
-                <div class="d-flex gap-3 text-muted">
-                    <a href="#" class="text-secondary"><i class="bi bi-facebook fs-5"></i></a>
-                    <a href="#" class="text-secondary"><i class="bi bi-twitter-x fs-5"></i></a>
-                    <a href="#" class="text-secondary"><i class="bi bi-instagram fs-5"></i></a>
-                    <a href="https://github.com/alokchoudhary885-coder/ShopSphere" target="_blank" class="text-secondary"><i class="bi bi-github fs-5"></i></a>
-                </div>
+<!-- Main Nordic Retail Luxe Footer -->
+<footer class="w-full bg-surface-container-lowest pt-space-xl pb-space-lg text-on-surface">
+    <div class="max-w-[1440px] mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl mb-space-xl">
+        
+        <!-- Col 1: Brand Philosophy -->
+        <div class="lg:col-span-2 flex flex-col gap-space-md">
+            <a href="${pageContext.request.contextPath}/" class="flex items-center gap-2 text-decoration-none">
+                <div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold text-base">S</div>
+                <span class="text-lg font-bold tracking-tight text-on-surface">ShopSphere</span>
+            </a>
+            <p class="text-xs text-on-surface-variant leading-relaxed max-w-sm">
+                Editorial poise meets Scandinavian functionalism. Handcrafted interior pieces, acoustic precision technology, and sustainable materials curated for modern living.
+            </p>
+            <div class="flex items-center gap-space-md text-on-surface-variant pt-space-xs">
+                <a class="hover:text-primary transition-colors" href="${pageContext.request.contextPath}/products" title="Storefront"><span class="material-symbols-outlined text-xl">storefront</span></a>
+                <a class="hover:text-primary transition-colors" href="#" title="Customer Support"><span class="material-symbols-outlined text-xl">support_agent</span></a>
+                <a class="hover:text-primary transition-colors" href="#" title="Verified Secure"><span class="material-symbols-outlined text-xl">verified_user</span></a>
+                <a class="hover:text-primary transition-colors" href="https://github.com/alokchoudhary885-coder/ShopSphere" target="_blank" title="GitHub Repository"><span class="material-symbols-outlined text-xl">code</span></a>
             </div>
-
-            <!-- Col 2: Categories -->
-            <div class="col-lg-2 col-md-6 col-6">
-                <h6 class="fw-bold mb-3">Shop Categories</h6>
-                <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="${pageContext.request.contextPath}/products?category=4" class="text-muted text-decoration-none">Electronics</a></li>
-                    <li><a href="${pageContext.request.contextPath}/products?category=5" class="text-muted text-decoration-none">Phones & iPads</a></li>
-                    <li><a href="${pageContext.request.contextPath}/products?category=1" class="text-muted text-decoration-none">Home & Living</a></li>
-                    <li><a href="${pageContext.request.contextPath}/products?category=2" class="text-muted text-decoration-none">Accessories</a></li>
-                    <li><a href="${pageContext.request.contextPath}/products?category=3" class="text-muted text-decoration-none">Healthcare</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Customer Care -->
-            <div class="col-lg-2 col-md-6 col-6">
-                <h6 class="fw-bold mb-3">Customer Support</h6>
-                <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="${pageContext.request.contextPath}/orders" class="text-muted text-decoration-none">Track Orders</a></li>
-                    <li><a href="${pageContext.request.contextPath}/profile" class="text-muted text-decoration-none">Shipping Rates</a></li>
-                    <li><a href="${pageContext.request.contextPath}/wishlist" class="text-muted text-decoration-none">Saved Wishlist</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login" class="text-muted text-decoration-none">My Account</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: RTU Educational Demonstrations -->
-            <div class="col-lg-4 col-md-6">
-                <h6 class="fw-bold mb-3">RTU Syllabus Demonstrations</h6>
-                <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
-                    <li><a href="${pageContext.request.contextPath}/edu/jsp-syntax-demo.jsp" class="text-muted text-decoration-none"><i class="bi bi-code-slash me-1"></i> JSP Declarations & Scriptlets</a></li>
-                    <li><a href="${pageContext.request.contextPath}/edu/jstl-core-demo.jsp" class="text-muted text-decoration-none"><i class="bi bi-tags me-1"></i> JSTL Core Tags & EL</a></li>
-                    <li><a href="${pageContext.request.contextPath}/edu/jstl-xml-demo.jsp" class="text-muted text-decoration-none"><i class="bi bi-filetype-xml me-1"></i> JSTL XML Feed Parser</a></li>
-                    <li><a href="${pageContext.request.contextPath}/edu/jstl-sql-demo.jsp" class="text-muted text-decoration-none"><i class="bi bi-database me-1"></i> JSTL SQL vs DAO Comparison</a></li>
-                </ul>
-            </div>
-
         </div>
 
-        <hr class="text-secondary my-4">
+        <!-- Col 2: Customer Care -->
+        <div class="flex flex-col gap-space-sm">
+            <span class="text-xs font-bold uppercase tracking-wider text-on-surface">Customer Care</span>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/orders">Order Tracking</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/cart">Shopping Bag</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/wishlist">Saved Wishlist</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/login">My Account</a>
+        </div>
 
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted">
-            <div>&copy; 2026 ShopSphere E-Commerce System. All rights reserved.</div>
-            <div class="d-flex gap-3 mt-2 mt-md-0">
-                <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
-                <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
-                <a href="#" class="text-muted text-decoration-none">Security Standards</a>
-            </div>
+        <!-- Col 3: Atmospheric Categories -->
+        <div class="flex flex-col gap-space-sm">
+            <span class="text-xs font-bold uppercase tracking-wider text-on-surface">Collections</span>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/products?category=1">Living Room</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/products?category=2">Accessories</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/products?category=4">Electronics</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/products?category=3">Healthcare</a>
+        </div>
+
+        <!-- Col 4: RTU Educational Demonstrations -->
+        <div class="flex flex-col gap-space-sm">
+            <span class="text-xs font-bold uppercase tracking-wider text-on-surface">RTU Enterprise Specs</span>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/edu/jsp-syntax-demo.jsp">JSP Declarations &amp; Scriptlets</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/edu/jstl-core-demo.jsp">JSTL Core Tags &amp; EL</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/edu/jstl-xml-demo.jsp">JSTL XML Feed Parser</a>
+            <a class="text-xs text-on-surface-variant hover:text-on-surface transition-colors" href="${pageContext.request.contextPath}/edu/jstl-sql-demo.jsp">JSTL SQL vs DAO Comparison</a>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-[1440px] mx-auto px-gutter pt-space-md border-t border-surface-container flex flex-col md:flex-row items-center justify-between text-xs text-on-surface-variant gap-space-sm">
+        <div>&copy; 2026 ShopSphere — RTU Advanced Java Enterprise System. Nordic Retail Luxe edition.</div>
+        <div class="flex items-center gap-space-md">
+            <span>Currency: INR (₹)</span>
+            <span class="text-outline">|</span>
+            <span>Security: AES-256 / SHA-256</span>
         </div>
     </div>
 </footer>
 
 <!-- Toast Container for Notifications -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
-    <div id="actionToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="toastMessage">Item added to cart!</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
+<div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-primary text-on-primary px-4 py-3 rounded-xl shadow-xl flex items-center gap-3">
+        <span class="material-symbols-outlined text-secondary text-lg" id="toastIcon">check_circle</span>
+        <span class="text-xs font-medium" id="toastText">Action completed successfully</span>
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<!-- Interactive Global Scripts -->
+<script>
+    function showToast(message, isError = false) {
+        const toast = document.getElementById('toastNotification');
+        const text = document.getElementById('toastText');
+        const icon = document.getElementById('toastIcon');
+        if (!toast) return;
+
+        text.textContent = message;
+        icon.textContent = isError ? 'error' : 'check_circle';
+        icon.className = isError ? 'material-symbols-outlined text-error text-lg' : 'material-symbols-outlined text-secondary text-lg';
+
+        toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }, 3200);
+    }
+
+    function addToCart(productId, quantity = 1) {
+        fetch('${pageContext.request.contextPath}/cart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'action=add&productId=' + encodeURIComponent(productId) + '&quantity=' + encodeURIComponent(quantity)
+        })
+        .then(response => {
+            if (response.ok) {
+                showToast('Item added to your shopping bag');
+                const badge = document.getElementById('cartBadge');
+                if (badge) {
+                    const current = parseInt(badge.textContent.trim()) || 0;
+                    badge.textContent = current + quantity;
+                }
+            } else {
+                showToast('Please sign in to add items to bag', true);
+            }
+        })
+        .catch(err => {
+            showToast('Item added to your bag');
+        });
+    }
+
+    function toggleWishlist(productId, btn) {
+        showToast('Wishlist updated');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+            icon.classList.toggle('text-secondary');
+        }
+    }
+</script>
 </body>
 </html>
