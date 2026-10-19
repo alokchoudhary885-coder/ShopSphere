@@ -13,6 +13,7 @@ target/
 
 # Maven wrapper (downloaded binaries)
 .tools/
+.tomcat/
 
 # IDE files
 .idea/

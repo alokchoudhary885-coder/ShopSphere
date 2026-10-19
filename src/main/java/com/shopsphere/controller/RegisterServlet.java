@@ -74,6 +74,8 @@ public class RegisterServlet extends HttpServlet {
             }
         } catch (IllegalArgumentException e) {
             setErrorAndForward(request, response, e.getMessage(), fullName, email, phone);
+        } catch (Exception e) {
+            setErrorAndForward(request, response, "An error occurred during registration: " + e.getMessage(), fullName, email, phone);
         }
     }
 
