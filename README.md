@@ -59,10 +59,36 @@
 | **Database** | MySQL Server | 8.0 / 8.4 LTS | Relational data persistence with foreign keys |
 | **Database Driver** | MySQL Connector/J | 8.4.0 | Native Type-4 binary protocol connectivity |
 | **View Templating** | JSTL + EL | 3.0 | Presentation layer logic without Java scriptlets |
+| **Design System** | Nordic Retail Luxe | Tailwind + Google Fonts | Scandinavian functionalism, editorial bento grids |
 | **Security** | jBCrypt | 0.4 | Salted cryptographic password hashing |
 | **Desktop GUI** | Java Swing & AWT | Standard JDK 21 | Native desktop administration suite |
 | **Distributed Systems** | Java RMI & Sockets | `java.rmi` / `java.net` | Remote method calls and multi-threaded TCP server |
 | **Testing** | JUnit 5 Jupiter | 5.10.2 | Automated unit and integration testing suite |
+
+---
+
+## Nordic Retail Luxe Design System
+
+ShopSphere features a contemporary Scandinavian design system engineered for high-conversion enterprise e-commerce:
+
+- **Aesthetic Principles:** Editorial poise, tactile micro-interactions, solid slate structural lines, and generous negative space rooted in architectural functionalism.
+- **Color Architecture:**
+  - Canvas Baseline: `#F8F9FF` (Canvas off-white)
+  - Focal Surfaces: `#FFFFFF` with hairline borders (`#E2E8F0`)
+  - Primary Structural Anchor: `#0B1C30` / `#000000`
+  - Interactive Indigo: `#4B41E1`
+  - Utility Indicators: In-Stock / Savings (`#009842`), Alerts & Urgency (`#BA1A1A`)
+- **Dual Typographic Hierarchy:**
+  - **Plus Jakarta Sans:** Geometric rhythm across display titles, commercial prices, and interactive tags.
+  - **Inter:** Neutral, high-legibility body copy, tabular forms, and specifications.
+- **Iconography:** Google `Material Symbols Outlined` with fine geometric stroke weights.
+- **Unified Screen Architecture:**
+  1. **Landing Storefront (`index.jsp`):** Asymmetrical 7-column / 5-column hero bento grid, atmosphere category showcase carousel, curatorial metrics ribbon (100% FSC wood, 48hr delivery, 5yr warranty), and dynamic featured products grid.
+  2. **Product Catalog (`products.jsp`):** 25% sticky faceted sidebar with min/max price range sliders, category selectors, brand filters, customer ratings, and responsive 3/4-column product cards.
+  3. **Product Spotlight PDP (`product-details.jsp`):** 50/50 editorial gallery with micro-zoom, designer attribution note, interactive quantity steppers, live stock indicators, customer review forms, and related curations.
+  4. **Account Gateway (`login.jsp`):** 3-column unified authentication portal featuring Customer Login, Client Registration, Wishlist Preview, and 1-click Demo Credentials autofill (`admin@shopsphere.com` / `customer@shopsphere.com`).
+  5. **Shopping Bag & Checkout (`cart.jsp` & `checkout.jsp`):** Line-item cart table with quantity adjusters, sticky order summary calculation, coupon code engine, multi-card address selection, and payment methods (UPI QR, Card, Net Banking, COD).
+  6. **Admin Operations Suite (`admin/dashboard.jsp`):** Executive telemetry header, 4 primary KPI cards (Gross Revenue, Orders, Active Users, Low Stock Alert), dual-bar monthly performance visualization, and fulfillment health tracker.
 
 ---
 

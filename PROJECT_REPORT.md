@@ -28,9 +28,8 @@ Unlike typical boilerplate applications, ShopSphere serves a dual objective:
 | **Relational Database** | MySQL Server | Version 8.0 / 8.4 LTS | Relational storage engine with foreign keys & UTF-8 mb4 |
 | **Database Driver** | MySQL Connector/J | 8.4.0 (Type-4 pure Java) | Native binary protocol socket connectivity |
 | **View Template Engine** | JSP + JSTL + EL | JSTL 3.0 (GlassFish impl) | Server-side templating without scriptlet pollution |
+| **Frontend Design System** | Nordic Retail Luxe | Tailwind CSS + Google Fonts + Material Symbols | Scandinavian functionalism, editorial bento grids, tactile micro-interactions |
 | **Security & Hashing** | jBCrypt | Version 0.4 (Work factor 10) | Salted one-way password cryptographic hashing |
-| **JSON Serialization** | Google Gson | Version 2.11.0 | Real-time AJAX response serialization for cart & search |
-| **Frontend Framework** | Bootstrap + CSS3 | Bootstrap 5.3 + Custom CSS | Mobile-first luxury responsive design (1440px / 375px) |
 | **Desktop Client** | Java Swing & AWT | Standard Java 21 Foundation | Standalone desktop catalog and inventory manager |
 | **Distributed Systems** | Java RMI & TCP Sockets | `java.rmi` + `java.net` | Multi-threaded client-server & remote method invocation |
 | **Testing Framework** | JUnit 5 (Jupiter) | Version 5.10.2 | 30 automated test cases with 100% pass rate |
@@ -186,7 +185,30 @@ try {
 
 ---
 
-## 8. Automated Test Suite Execution Results
+## 8. Frontend Engineering: Nordic Retail Luxe Design System
+
+ShopSphere implements the **Nordic Retail Luxe** visual design system, combining Scandinavian functionalism, editorial bento grids, and high-conversion e-commerce ergonomics:
+
+1. **Design Tokens & Palette:**
+   - **Canvas Foundation:** `#F8F9FF` soft off-white canvas that eliminates eye strain.
+   - **Focal Surfaces:** `#FFFFFF` cards with crisp hairline structural borders (`#E2E8F0`).
+   - **Primary Structural Tone:** `#0B1C30` deep architectural slate.
+   - **Interactive Accent:** `#4B41E1` interactive indigo for focus boundaries, pill badges, and active highlights.
+   - **Utility Semantic Cues:** Green (`#009842`) for stock and savings; Amber for countdowns; Red (`#BA1A1A`) for validation alerts.
+2. **Dual Typographic Hierarchy:**
+   - **Headings & Prices:** Google Fonts `Plus Jakarta Sans` (`display-hero: 44px`, `headline-lg: 32px`, `price-lg: 22px`).
+   - **Body & Tabular Data:** Google Fonts `Inter` (`body-lg: 16px`, `body-md: 14px`) for legibility in dense product tables and checkout lists.
+3. **Core View Architecture:**
+   - **Storefront (`index.jsp`):** Asymmetrical 7-column / 5-column bento hero, atmospheric space showcase (Living Room, Bedroom, Dining, Electronics, Accessories), and curatorial metric ribbon.
+   - **Catalog (`products.jsp`):** Sticky faceted sidebar filters with dynamic price range inputs, brand checkboxes, rating filters, and responsive product cards with hover micro-zooms.
+   - **Product Detail (`product-details.jsp`):** 50/50 spotlight gallery with micro-zoom preview, designer notes, quantity steppers, live stock indicators, and verified customer review submission forms.
+   - **Account Gateway (`login.jsp`):** 3-column unified portal featuring Customer Login, Client Registration, Wishlist Preview, and 1-click Demo Credentials auto-fill.
+   - **Cart & Multi-Step Checkout (`cart.jsp`, `checkout.jsp`):** Real-time shopping bag calculations, coupon code validation engine, delivery address selector, and simulated payment methods (UPI QR, Card, Net Banking, COD).
+   - **Admin Console (`admin/dashboard.jsp`):** Operations telemetry stream, 4 KPI metric cards, dual-bar performance charts, and fulfillment health tracker.
+
+---
+
+## 9. Automated Test Suite Execution Results
 
 All 30 automated test cases execute cleanly via JUnit 5 and Maven Surefire runner with **zero failures, zero errors, and zero skipped tests**:
 
