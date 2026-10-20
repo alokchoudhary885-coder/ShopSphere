@@ -84,6 +84,27 @@ public final class DBConnection {
         dbUrl = PROPERTIES.getProperty("db.url", "jdbc:mysql://localhost:3306/shopsphere?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8").trim();
         dbUsername = PROPERTIES.getProperty("db.username", "root").trim();
         dbPassword = PROPERTIES.getProperty("db.password", "").trim();
+
+        // Environment variables override properties for cloud production (Render, Railway, etc.)
+        String envUrl = System.getenv("DB_URL");
+        if (envUrl != null && !envUrl.trim().isEmpty()) {
+            dbUrl = envUrl.trim();
+        }
+        String envUser = System.getenv("DB_USERNAME");
+        if (envUser == null || envUser.trim().isEmpty()) {
+            envUser = System.getenv("DB_USER");
+        }
+        if (envUser != null && !envUser.trim().isEmpty()) {
+            dbUsername = envUser.trim();
+        }
+        String envPass = System.getenv("DB_PASSWORD");
+        if (envPass != null) {
+            dbPassword = envPass.trim();
+        }
+        String envDriver = System.getenv("DB_DRIVER");
+        if (envDriver != null && !envDriver.trim().isEmpty()) {
+            dbDriver = envDriver.trim();
+        }
     }
 
     /**
@@ -109,7 +130,8 @@ public final class DBConnection {
                         host = hostPort;
                     }
                 }
-                mysqlAvailable = isHostReachable(host, port, 800);
+                    int timeout = (host.equals("localhost") || host.equals("127.0.0.1")) ? 800 : 3000;
+                    mysqlAvailable = isHostReachable(host, port, timeout);
             } catch (Exception e) {
                 mysqlAvailable = false;
             }
