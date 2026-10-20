@@ -73,6 +73,13 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
+        <!-- H2 In-Memory/Embedded Database for Zero-Configuration Local Execution & Offline Fallback -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.3.232</version>
+        </dependency>
+
         <!-- jBCrypt for Salted Password Hashing -->
         <dependency>
             <groupId>org.mindrot</groupId>

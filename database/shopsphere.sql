@@ -242,12 +242,12 @@ CREATE TABLE coupon_usage (
 
 -- 1. USERS (Default Passwords: 'admin123' and 'customer123')
 -- BCrypt hashes:
--- admin123 -> $2a$10$3tK15nB9t8U2.5JtVv6Pee92xP67K2mCq0YI1U6dJqL5hD4kQ6.6O
--- customer123 -> $2a$10$oJ1R4wS9t0M5.1KtVv6Pee92xP67K2mCq0YI1U6dJqL5hD4kQ7.8P
+-- admin123 -> $2a$10$20xYyaiClGDhAigzXvhSCeDy3qVbpmxE/BpouR5WBryzeSGOa/ORW
+-- customer123 -> $2a$10$OWEAPugXrnSkaxqvQI8FOO7NXMKxLqxhnPlMseB9BqDyJVPbB1RP2
 INSERT INTO users (id, full_name, email, password_hash, phone, role, status) VALUES
-(1, 'Super Admin', 'admin@shopsphere.com', '$2a$10$3tK15nB9t8U2.5JtVv6Pee92xP67K2mCq0YI1U6dJqL5hD4kQ6.6O', '9876543210', 'ADMIN', 'ACTIVE'),
-(2, 'Alok Sharma', 'customer@shopsphere.com', '$2a$10$oJ1R4wS9t0M5.1KtVv6Pee92xP67K2mCq0YI1U6dJqL5hD4kQ7.8P', '9123456780', 'CUSTOMER', 'ACTIVE'),
-(3, 'Priya Verma', 'priya@example.com', '$2a$10$oJ1R4wS9t0M5.1KtVv6Pee92xP67K2mCq0YI1U6dJqL5hD4kQ7.8P', '9988776655', 'CUSTOMER', 'ACTIVE');
+(1, 'Super Admin', 'admin@shopsphere.com', '$2a$10$20xYyaiClGDhAigzXvhSCeDy3qVbpmxE/BpouR5WBryzeSGOa/ORW', '9876543210', 'ADMIN', 'ACTIVE'),
+(2, 'Alok Sharma', 'customer@shopsphere.com', '$2a$10$OWEAPugXrnSkaxqvQI8FOO7NXMKxLqxhnPlMseB9BqDyJVPbB1RP2', '9123456780', 'CUSTOMER', 'ACTIVE'),
+(3, 'Priya Verma', 'priya@example.com', '$2a$10$OWEAPugXrnSkaxqvQI8FOO7NXMKxLqxhnPlMseB9BqDyJVPbB1RP2', '9988776655', 'CUSTOMER', 'ACTIVE');
 
 -- 2. ADDRESSES
 INSERT INTO addresses (id, user_id, street, city, state, postal_code, country, is_default) VALUES
