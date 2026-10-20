@@ -26,8 +26,39 @@
             <p style="color: #64748b;">RTU Advanced Java Syllabus: <code>&lt;x:parse&gt;</code>, <code>&lt;x:out&gt;</code>, <code>&lt;x:forEach&gt;</code>, and XPath expressions over external XML product catalog feeds.</p>
         </div>
 
-        <!-- Import and Parse XML Feed -->
-        <c:import url="/edu/products.xml" var="xmlRawContent" />
+        <!-- XML Feed Data & Parse -->
+        <c:set var="xmlRawContent">
+<catalog>
+    <product id="101" category="Electronics">
+        <name>Apple Watch Series 8</name>
+        <brand>Apple</brand>
+        <price>399.00</price>
+        <rating>4.9</rating>
+        <stock>45</stock>
+    </product>
+    <product id="102" category="Audio">
+        <name>JBL Live Over Ear Wireless Headphone</name>
+        <brand>JBL</brand>
+        <price>129.99</price>
+        <rating>4.7</rating>
+        <stock>80</stock>
+    </product>
+    <product id="103" category="Computing">
+        <name>Apple MacBook Pro 14 M3</name>
+        <brand>Apple</brand>
+        <price>1999.00</price>
+        <rating>5.0</rating>
+        <stock>18</stock>
+    </product>
+    <product id="104" category="Accessories">
+        <name>Ergonomic Leather Desk Pad</name>
+        <brand>Satechi</brand>
+        <price>39.50</price>
+        <rating>4.6</rating>
+        <stock>120</stock>
+    </product>
+</catalog>
+        </c:set>
         <x:parse xml="${xmlRawContent}" var="catalogDoc" />
 
         <!-- 1. XPath Singular Node Selection -->

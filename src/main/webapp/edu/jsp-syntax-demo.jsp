@@ -3,7 +3,7 @@
 
 <%-- RTU Advanced Java Educational Demo: Traditional JSP Syntax --%>
 <%! 
-    // 1. JSP DECLARATION (<%! %>): Variables & methods become class-level members of generated servlet!
+    // 1. JSP DECLARATION: Variables and methods become class-level members of generated servlet!
     private int globalHitCounter = 0;
 
     public int calculateDiscountedPrice(int originalPrice, int discountPercent) {
@@ -12,7 +12,7 @@
 %>
 
 <%
-    // 2. JSP SCRIPTLET (<% %>): Code executed inside _jspService() method for every request!
+    // 2. JSP SCRIPTLET: Code executed inside _jspService() method for every request!
     synchronized(this) {
         globalHitCounter++;
     }

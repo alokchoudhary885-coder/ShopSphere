@@ -35,10 +35,10 @@
         <!-- 1. c:set and c:out -->
         <div class="demo-box">
             <h3 style="color: #0f172a;">1. Variable Assignment &amp; Safe Output: <code>&lt;c:set&gt;</code> &amp; <code>&lt;c:out&gt;</code></h3>
-            <c:set var="cartTotal" value="1850.00" scope="request" />
+            <c:set var="cartTotal" value="${1850.00}" scope="request" />
             <c:set var="userRole" value="ADMIN" scope="request" />
             <div class="code-box">
-&lt;c:set var="cartTotal" value="1850.00" scope="request" /&gt;
+&lt;c:set var="cartTotal" value="\${1850.00}" scope="request" /&gt;
 &lt;c:set var="userRole" value="ADMIN" scope="request" /&gt;
 &lt;c:out value="\${cartTotal}" /&gt;
             </div>
@@ -51,13 +51,13 @@
         <div class="demo-box">
             <h3 style="color: #0f172a;">2. Conditional Branching: <code>&lt;c:if&gt;</code></h3>
             <div class="code-box">
-&lt;c:if test="\${cartTotal &gt;= 1000}"&gt;
+&lt;c:if test="\${cartTotal &gt;= 1000.0}"&gt;
     Eligible for Free Express Shipping!
 &lt;/c:if&gt;
             </div>
             <div class="output-box">
-                <c:if test="${cartTotal >= 1000}">
-                    🎉 Status: Customer qualifies for <strong>Free Express Shipping</strong> (Order &ge; $1,000)!
+                <c:if test="${cartTotal >= 1000.0}">
+                    Status: Customer qualifies for <strong>Free Express Shipping</strong> (Order &ge; $1,000)!
                 </c:if>
             </div>
         </div>
@@ -127,7 +127,7 @@
                 <% int badVal = 10 / 0; %>
             </c:catch>
             <div class="output-box" style="background: #fef2f2; border-color: #ef4444; color: #991b1b;">
-                Caught expected exception safely: <strong><c:out value="${calcError.message}" /></strong> (<c:out value="${calcError.class.name}" />)
+                Caught expected exception safely: <strong><c:out value="${calcError.message}" /></strong> (<c:out value="${calcError['class'].name}" />)
             </div>
         </div>
     </div>
