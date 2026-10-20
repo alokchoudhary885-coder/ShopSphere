@@ -37,7 +37,7 @@
         <!-- Meta Line: Category & Star Rating -->
         <div class="flex items-center justify-between mb-1">
             <span class="text-[11px] font-bold text-secondary uppercase tracking-wider">
-                ${product.category != null ? product.category.name : 'Exclusive'}
+                ${not empty product.categoryName ? product.categoryName : 'Exclusive'}
             </span>
             <div class="flex items-center gap-1 text-[11px] font-bold text-on-surface">
                 <span class="material-symbols-outlined text-xs text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -55,7 +55,7 @@
 
         <!-- Price & Discounts -->
         <div class="flex items-baseline gap-2 mb-space-md">
-            <span class="font-price-lg text-base font-bold text-on-surface">₹${product.getDiscountedPrice()}</span>
+            <span class="font-price-lg text-base font-bold text-on-surface">₹${product.discountedPrice}</span>
             <c:if test="${product.hasDiscount()}">
                 <span class="text-xs text-outline line-through">₹${product.price}</span>
                 <span class="bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded text-[10px] font-bold">
@@ -69,13 +69,13 @@
     <div class="grid grid-cols-2 gap-2 mt-auto">
         <button type="button" 
                 onclick="addToCart(${product.id}, 1)" 
-                ${!product.isInStock() ? 'disabled' : ''}
+                ${!product.inStock ? 'disabled' : ''}
                 class="w-full inline-flex items-center justify-center gap-1 bg-primary text-on-primary hover:bg-secondary py-2.5 rounded-lg text-xs font-semibold transition-colors duration-200 cursor-pointer disabled:opacity-50">
             <span class="material-symbols-outlined text-sm">shopping_bag</span>
             <span>Add to Bag</span>
         </button>
         <a href="${pageContext.request.contextPath}/checkout?buyNowId=${product.id}&qty=1" 
-           class="w-full inline-flex items-center justify-center gap-1 bg-surface-container-high hover:bg-secondary hover:text-on-secondary text-on-surface py-2.5 rounded-lg text-xs font-semibold transition-colors duration-200 text-center ${!product.isInStock() ? 'pointer-events-none opacity-50' : ''}">
+           class="w-full inline-flex items-center justify-center gap-1 bg-surface-container-high hover:bg-secondary hover:text-on-secondary text-on-surface py-2.5 rounded-lg text-xs font-semibold transition-colors duration-200 text-center ${!product.inStock ? 'pointer-events-none opacity-50' : ''}">
             <span>Buy Now</span>
         </a>
     </div>
